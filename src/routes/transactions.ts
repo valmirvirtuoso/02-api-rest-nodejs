@@ -5,6 +5,11 @@ import { randomUUID } from 'node:crypto'
 import { checkSessionIdExists } from '../middlewares/check-session-id-exists'
 
 // Cookies <-> Forma da gente manter contexto entre requisições
+// Unitários: unidade da sua aplicação
+// Integração: comunicação entre duas ou mais unidades
+// e2e - ponta a ponta: simulam um usuário operando na sua aplicação
+
+//  Pirâmide de testes, na base teremos testes unitarios, seguidos por integração e dps e2e. Muitos testes unitarios, alguns de integração e poucos e2e.
 
 export async function transactionsRoutes(app: FastifyInstance) {
   app.addHook('preHandler', async (request) => {
